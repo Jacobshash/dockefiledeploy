@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dockefiledeploy
+  data:
+    redis:
+      password: 123456
+      database: 0
+      host: ${redis.ip}
+      port: ${redis.port}
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://${mysql.ip}:${mysql.port}/docker_compose_test
+    username: root
+    password: 123456
+logging:
+  level:
+    root: info
+    com.loltoulan.dockefiledeploy: debug
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+
+mysql:
+  ip: 192.168.187.30
+  port: 13306
+redis:
+  ip: 192.168.187.30
+  port: 16379
